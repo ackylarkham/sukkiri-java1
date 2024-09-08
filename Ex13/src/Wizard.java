@@ -1,13 +1,14 @@
 public class Wizard {
     private int hp;
     private int mp;
-    private String name;
-    Wand wand;
+    private String wizardName;
+    private Wand wand;
 
-    public Wizard(int hp, int mp, String name) {
-        this.hp = setHp(hp);
-        this.mp = setMp(mp);
-        this.name = setName(name);
+    public Wizard(int hp, int mp, String wizardName, String wandName, double wandPower) {
+        this.setHp(hp);
+        this.setMp(mp);
+        this.setName(wizardName);
+        this.setWand(wandName, wandPower);
     }
 
     public void heal(Hero h) {
@@ -21,6 +22,11 @@ public class Wizard {
         return this.hp;
     }
     public void setHp(int hp) {
+        if (hp >= 0) {
+            //OK
+        } else {
+            throw new IllegalArgumentException("HPはゼロ以上でなくてはならない");
+        }
         this.hp = hp;
     }
 
@@ -33,10 +39,23 @@ public class Wizard {
     }
 
     public String getName() {
-        return this.name;
+        return this.wizardName;
     }
 
     public void setName(String name) {
-        this.name = name;
+        if (name.length() >= 3) {
+            //OK
+        } else {
+            throw new IllegalArgumentException("魔法使いの名前は3文字以上でなくてはならない");
+        }
+        this.wizardName = name;
+    }
+
+    public Wand getWand() {
+        return this.wand;
+    }
+
+    public void setWand(String name, double power) {
+        this.wand = new Wand(name, power);
     }
 }
