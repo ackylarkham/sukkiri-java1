@@ -5,4 +5,8 @@ public class Wand {
     public double getPower() {
         return this.power;
     }
+
+    public String name() {
+        return this.name;
+    }
 }
