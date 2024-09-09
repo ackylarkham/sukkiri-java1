@@ -25,7 +25,7 @@ public class Wizard {
         if (hp >= 0) {
             //OK
         } else {
-            throw new IllegalArgumentException("HPはゼロ以上でなくてはならない");
+            throw new IllegalArgumentException("HPは0(ゼロ)以上でなくてはならない");
         }
         this.hp = hp;
     }
@@ -35,6 +35,11 @@ public class Wizard {
     }
 
     public void setMp(int mp) {
+        if (mp >= 0) {
+            //OK
+        } else {
+            throw new IllegalArgumentException("MPは0(ゼロ)以上でなくてはならない");
+        }
         this.mp = mp;
     }
 
@@ -43,10 +48,14 @@ public class Wizard {
     }
 
     public void setName(String name) {
-        if (name.length() >= 3) {
-            //OK
+        if (name == null) {
+            throw new IllegalArgumentException("魔法使いの名前が設定されていない");
         } else {
-            throw new IllegalArgumentException("魔法使いの名前は3文字以上でなくてはならない");
+            if (name.length() >= 3) {
+                //OK
+            } else {
+                throw new IllegalArgumentException("魔法使いの名前は3文字以上でなくてはならない");
+            }    
         }
         this.wizardName = name;
     }
